@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "EmployeeForm";
+}
+
+<h2>EmployeeForm</h2>
+<table>
+    <tr>
+        <td>Name: </td>
+        <td><input id="Name_txt" type="text" /></td>
+    </tr>
+
+    <tr>
+        <td>Address: </td>
+        <td><input id="Address_txt" type="text" /></td>
+    </tr>
+
+    <tr>
+        <td>Age: </td>
+        <td><input id="Age_txt" type="text" /></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td><input id="Save_btn" type="button" value="Save" onclick="INSERT()"/></td>
+    </tr>
+</table>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    function INSERT() {
+        $.ajax({
+            url: 'Employee/EmployeeInsert',
+            type: 'post',
+            data: {
+                A: $("#Name_txt").val(),
+                B: $("#Address_txt").val(),
+                C: $("#Age_txt").val()
+            },
+            success: function () {
+                alert('Success!');
+            },
+            error: function () {
+                alert('Fail!');
+            }
+        });
+    }
+</script>
+
